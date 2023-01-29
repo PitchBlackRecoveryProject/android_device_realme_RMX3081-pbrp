@@ -43,7 +43,7 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_OTA_ASSERT_DEVICE := "RMX3081,RMX3081L1,ossi,qssi,atoll"
 
 # APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
+#DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Bootloader
 PRODUCT_PLATFORM := atoll
@@ -140,7 +140,7 @@ TARGET_USES_MKE2FS := true # Use mke2fs to create ext4 images
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/props/system.prop
 TARGET_VENDOR_PROP := $(DEVICE_PATH)/props/vendor.prop
 
@@ -183,6 +183,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_FUSE_EXFAT := true
 TW_INCLUDE_FASTBOOTD := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
+TW_EXCLUDE_APEX := true
 
 # Maintainer/Version
 TW_DEVICE_VERSION := perilouspike
@@ -222,7 +223,7 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_USE_FSCRYPT_POLICY := 2
 
 # drift/offset
-TW_QCOM_ATS_OFFSET := 1617714502203
+#TW_QCOM_ATS_OFFSET := 1617714502203
 
 # Statusbar icons flags
 #TW_STATUS_ICONS_ALIGN := center
@@ -259,4 +260,4 @@ TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk" #needed for Android 11 Gapps
 #TW_OVERRIDE_SYSTEM_PROPS := \
      #"ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 
-
+#
