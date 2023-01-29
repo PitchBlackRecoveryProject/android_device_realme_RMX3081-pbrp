@@ -25,32 +25,3 @@ The Realme 8 pro (codenamed _'RMX3081'_) is a mid-range smartphone from OPPO's s
 ## Realme 8 Pro
 
 ![image](https://www.91-img.com/gallery_images_uploads/4/1/41eb2738ac8112d23712d93ac0031742eeba6390.JPG?tr=h-550,w-0,c-at_max)![image](https://www.91-img.com/gallery_images_uploads/9/5/959e7298ff9a0ae1ed73fd2bc115e5fc95586a86.JPG?tr=h-550,w-0,c-at_max)
-
-## Getting Started
-To get started with AOSP sources to build TWRP, you'll need to get familiar
-with [Git and Repo](https://source.android.com/source/using-repo.html).
-
-To initialize your local repository using the AOSP trees to build TWRP, use a command like this:
-```bash
-repo init --depth=1 -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-```
-Then to sync up:
-```bash
-repo sync
-# Recomended save more time and disk space
-repo sync -j$(nproc --ignore=1) --no-tags -c -s
-```
-
-Clone this repo
-```bash
-mkdir -p device/reame
-git clone https://github.com/perilouspike/android_device_realme_RMX3081_unified.git -b android-12.1 devices/realme/RMX3081
-```
-
-Build:
-```bash
- export ALLOW_MISSING_DEPENDENCIES=true
- . build/envsetup.sh
- lunch twrp_RMX3081-eng
- mka recoveryimage
-```
