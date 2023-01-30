@@ -184,6 +184,7 @@ TW_INCLUDE_FUSE_EXFAT := true
 TW_INCLUDE_FASTBOOTD := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 TW_EXCLUDE_APEX := true
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone4/temp"
 
 # Maintainer/Version
 TW_DEVICE_VERSION := perilouspike
@@ -225,11 +226,13 @@ TW_USE_FSCRYPT_POLICY := 2
 # drift/offset
 #TW_QCOM_ATS_OFFSET := 1617714502203
 
-# Statusbar icons flags
+# Statusbar/notchbar adjustments
 #TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := 400
-TW_CUSTOM_CLOCK_POS := 200
-TW_CUSTOM_BATTERY_POS := 800
+#TW_CUSTOM_CPU_POS := 400
+#TW_CUSTOM_CLOCK_POS := 200
+#TW_CUSTOM_BATTERY_POS := 800
+TW_Y_OFFSET := 115
+TW_H_OFFSET := -115
 
 # Recovery Modules
 TARGET_RECOVERY_DEVICE_MODULES += \
