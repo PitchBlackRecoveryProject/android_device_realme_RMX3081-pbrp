@@ -1,5 +1,7 @@
-# Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 TeamWin Recovery Project
+#
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 TeamWin Recovery Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,6 +28,7 @@ $(call inherit-product-if-exists, vendor/pb/config/common.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX3081
@@ -33,10 +36,3 @@ PRODUCT_NAME := twrp_RMX3081
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := realme 8 Pro
 PRODUCT_MANUFACTURER := realme
-
-PRODUCT_GMS_CLIENTID_BASE := android-oppo-rvo3
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="RMX3081-user 12 SKQ1.210216.001 R.202208061704 release-keys"
-
-BUILD_FINGERPRINT := realme/RMX3081/RMX3081L1:12/SKQ1.210216.001/R.202208061704:user/release-keys

@@ -29,35 +29,30 @@
 import /init.recovery.qcom_decrypt.rc
 
 on init
-    rm -rf /data/nandswap
     mkdir /tmp/install
     mkdir /tmp/install/bin
-    chmod 0777 /system/bin/postrecoveryboot.sh
-    start postrecoveryboot
     write /sys/class/backlight/panel0-backlight/brightness 200
-    setprop sys.usb.configfs 1
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-on post-fs
-    start boot-hal-1-1
-
-on boot
-    start health-hal-2-1
-    
-service hidl_memory /system/bin/hw/android.hidl.allocator@1.0-service
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    seclabel u:r:recovery:s0
-    
 service postrecoveryboot /system/bin/postrecoveryboot.sh
     user root
     group root
-#setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
     disabled
     oneshot
-    seclabel u:r:recovery:s0    
+    seclabel u:r:recovery:s0
+	
+service unified-script /system/bin/unified-script.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on boot
+    start unified-script
+    start health-hal-2-1
+    setprop sys.usb.config adb
+    chmod 0777 /system/bin/unified-script.sh

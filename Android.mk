@@ -1,6 +1,7 @@
 #
-# Copyright (C) 2022 The Android Open Source Project
-# Copyright (C) 2022 TeamWin Recovery Project
+# Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 TeamWin Recovery Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
