@@ -37,8 +37,9 @@ PRODUCT_PACKAGES += \
     fastbootd
 	
 # Recovery Modules
-#TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hidl.allocator@1.0 \
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libspl
+    #android.hidl.allocator@1.0 \
     android.hidl.memory@1.0 \
     android.hidl.memory.token@1.0 \
     libdmabufheap \
@@ -48,8 +49,9 @@ PRODUCT_PACKAGES += \
     libc.so \
     libxml2
 
-#RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.allocator@1.0.so \
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libspl.so
+    #$(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.allocator@1.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory@1.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory.token@1.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libdmabufheap.so \
