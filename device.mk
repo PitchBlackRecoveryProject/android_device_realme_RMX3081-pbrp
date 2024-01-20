@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
 
 LOCAL_PATH := device/realme/RMX3081
 
@@ -36,27 +35,15 @@ PRODUCT_PACKAGES += \
 	android.hardware.fastboot@1.0-impl-mock.recovery \
     fastbootd
 	
-# Recovery Modules
+# Take a few libraries from sources
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libspl
-    #android.hidl.allocator@1.0 \
-    android.hidl.memory@1.0 \
-    android.hidl.memory.token@1.0 \
-    libdmabufheap \
-    libhidlmemory \
-    libion \
-    libnetutils \
-    libc.so \
+    libspl \
     libxml2
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libspl.so
-    #$(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.allocator@1.0.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory@1.0.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory.token@1.0.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libdmabufheap.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libhidlmemory.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libnetutils.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libc.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libspl.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+
+# Apex libraries
+PRODUCT_COPY_FILES += \
+    $(OUT_DIR)/target/product/$(PRODUCT_RELEASE_NAME)/obj/SHARED_LIBRARIES/libandroidicu_intermediates/libandroidicu.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libcuuc.so    

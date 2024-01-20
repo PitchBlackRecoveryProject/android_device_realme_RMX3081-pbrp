@@ -19,16 +19,20 @@
 # Inherit from the Device Tree itself.
 $(call inherit-product, device/realme/RMX3081/device.mk)
 
-# Inherit from TWRP-common Stuff, if building TWRP.
-$(call inherit-product-if-exists, vendor/twrp/config/common.mk)
+# Inherit from PBRP-common stuff.
+$(call inherit-product, vendor/pb/config/common.mk)
 
-# Inherit from PBRP-common stuff, if building PBRP.
-$(call inherit-product-if-exists, vendor/pb/config/common.mk)
-
-# Inherit from those products. Most specific first.
+# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+# Inherit from this product for devices that support only 64-bit apps using:
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+# Device Target Name
+PRODUCT_RELEASE_NAME := RMX3081
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX3081

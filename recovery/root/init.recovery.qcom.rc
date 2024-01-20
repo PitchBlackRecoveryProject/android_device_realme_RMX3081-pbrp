@@ -44,15 +44,9 @@ service postrecoveryboot /system/bin/postrecoveryboot.sh
     oneshot
     seclabel u:r:recovery:s0
 	
-service unified-script /system/bin/unified-script.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
 on boot
     start unified-script
     start health-hal-2-1
     setprop sys.usb.config adb
     chmod 0777 /system/bin/unified-script.sh
+    chmod 0777 /system/bin/postrecoveryboot.sh
