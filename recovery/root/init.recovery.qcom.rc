@@ -32,6 +32,8 @@ on init
     mkdir /tmp/install
     mkdir /tmp/install/bin
     write /sys/class/backlight/panel0-backlight/brightness 200
+    chmod 0777 /system/bin/unified-script.sh
+    chmod 0777 /system/bin/postrecoveryboot.sh
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -43,10 +45,16 @@ service postrecoveryboot /system/bin/postrecoveryboot.sh
     disabled
     oneshot
     seclabel u:r:recovery:s0
-	
+
+service unified-script /system/bin/unified-script.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on boot
+    start postrecoveryboot
     start unified-script
     start health-hal-2-1
     setprop sys.usb.config adb
-    chmod 0777 /system/bin/unified-script.sh
-    chmod 0777 /system/bin/postrecoveryboot.sh
