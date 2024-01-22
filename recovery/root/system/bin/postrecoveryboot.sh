@@ -1,4 +1,4 @@
-#!/sbin/sh
+#!/system/bin/sh
 #
 # TODO: this kludge is needed to prevent removing stock recovery file in /vendor
 # to prevent the stock ROM from replacing TWRP.
