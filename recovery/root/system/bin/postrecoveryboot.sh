@@ -11,6 +11,16 @@ mkdir -p "$TMP_SYSTEM"
 mount -w "/dev/block/mapper/vendor" "$TMP_VENDOR"
 mount -w "/dev/block/mapper/system" "$TMP_SYSTEM"
 
+  # partitions
+  local Parts="system system_ext vendor"
+  
+  # loop through
+  for i in ${Parts}
+  do
+     echo "I:Setting $i to read/write" >> /tmp/recovery.log
+     blockdev --setrw /dev/block/mapper/$i
+  done
+
 # Android 12+
 if [ -f "$TMP_VENDOR/recovery-from-boot.p" ]; then
   echo "I:postrecoveryboot: Removing stock recovery file in /vendor to prevent the stock ROM from replacing TWRP." >> /tmp/recovery.log
