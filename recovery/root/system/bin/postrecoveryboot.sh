@@ -20,7 +20,7 @@ set_mount_as_read_write() {
   blockdev --setrw "/dev/block/mapper/$TARGET_PARTITION"
   sleep 1
   echo "I:postrecoveryboot: Mounting $TARGET_PARTITION as read/write to $TMP_VENDOR..." >> /tmp/recovery.log
-  mount -o -rw "/dev/block/mapper/$TARGET_PARTITION" "$TMP_VENDOR"
+  mount -t erofs -o -rw "/dev/block/mapper/$TARGET_PARTITION" "$TMP_VENODR"
   sleep 1
 }
 
