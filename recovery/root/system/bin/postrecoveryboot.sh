@@ -21,7 +21,6 @@ set_mount_as_read_write() {
   sleep 1
   echo "I:postrecoveryboot: Mounting $TARGET_PARTITION as read/write to $TMP_VENDOR..." >> /tmp/recovery.log
   mount -t erofs -o -w "/dev/block/mapper/$TARGET_PARTITION" "$TMP_VENDOR"
-  mount -w "/dev/block/mapper/$TARGET_PARTITION" "$TMP_VENDOR"
   sleep 1
 }
 
